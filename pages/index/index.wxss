@@ -1,0 +1,71 @@
+/* pages/index/index.wxss */
+.container{
+  min-height: 100%;
+  background:#f2f2f2;
+}
+.swiper{
+  width:750rpx;
+  height:562.5rpx
+}
+.swiper-item image{
+  width:100%;
+  height:562.5rpx
+}
+.title-container{
+  background:#fff;
+  text-align: center;
+  margin-top:24rpx;
+  padding:12rpx 0;
+}
+.title-container .title1{
+  font-size:44rpx;
+  color:#e64340;
+}
+.title-container .title2{
+  font-size:36rpx;
+  color:#6e6d6b;
+  margin-top:12rpx;
+}
+.goods-container{
+  display: flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  padding:24rpx;
+  box-sizing: content-box
+}
+.goods-box{
+  width:339rpx;
+  height:472rpx;
+  overflow:hidden;
+  margin-bottom:24rpx;
+  background:#fff;
+}
+.goods-box .image-box{
+  width:339rpx;
+  height:339rpx;
+  overflow: hidden;
+  padding:8rpx 8rpx 0rpx 8rpx;
+  box-sizing:border-box;
+
+}
+.image-box image{
+  width:100%;
+  height:339rpx;
+}
+.goods-box .goods-title{
+  width:280rpx;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  overflow: hidden;
+  font-size:24rpx;
+  padding:24rpx 0 0 24rpx;
+  color:#000;
+}
+.goods-box .goods-price{
+  width:280rpx;
+  overflow:hidden;
+  padding:24rpx 0;
+  color:#e64340;
+  font-size:24rpx;
+  margin-left:24rpx;
+}

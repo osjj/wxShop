@@ -1,0 +1,76 @@
+<import src="../../wxParse/wxParse.wxml"/>
+<view class="container">
+  <view class="swiper-container">
+    <swiper class="swiper" indicator-dots="{{indicatorDors}}"  autoplay="{{autoplay}}" duration="{{duration}}" interval="{{interval}}">
+      <block wx:for="{{goodsDetail.pics}}" wx:key="goodsDetail">
+        <swiper-item class="swiper-item">
+          <image src="{{item.pic}}" width="355px" height="150px"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="goods-info">
+    <view class="goods-title">{{goodsDetail.basicInfo.name}}</view>
+    <view class="goods-price">￥{{goodsDetail.basicInfo.minPrice}}</view>
+    <view wx:if="{{hasMoreSelect}}" class="row-arrow" bindtap="bindGuiGeTap">{{selectSize}}</view>
+  </view>
+  <view class="goods-des-info">
+    <view class="goods-text">
+      <template is="wxParse" data="{{wxParseData:article.nodes}}"></template>
+    </view>
+  </view>
+  <view class="footer-box">
+    <view class="shop-cart-btn" bindtap="goShopCar">
+      <view class="shop-num">{{shopNum}}</view>
+      购物车
+    </view>
+    <view class="join-shop-cart" bindtap="addShopCar">加入购物车</view>
+    <view class="now-buy" bindtap="tobuy">立即购买</view>
+  </view>
+  <view class="jiesuan-box">
+        <view class="left-price">
+            <view class="all-selected  {{allSelect?'active':''}}" bindtap="bindAllSelect">全选</view>
+            <view class="total" hidden="{{noSelect}}">合计：¥ {{totalPrice}}</view>
+        </view>
+        <view class="to-pay-btn {{noSelect?'no-select':''}}" hidden="{{!saveHidden}}" bindtap="toPayOrder">去结算</view>
+        <!--<view class="to-pay-btn {{noSelect?'no-select':''}}" hidden="{{saveHidden}}" bindtap="deleteSelected">删除</view>-->
+  </view>
+      <view class="show-popup" hidden="{{hideShopPopup}}" >
+        <view class="popup-mask" bindtap="closePopupTap"></view>
+        <view class="popup-contents">
+             <view class="pop-goods-info">
+                <view class="pop-img-box">
+                    <image src="{{goodsDetail.basicInfo.pic}}" class="goods-thumbnail"/>
+                </view>
+                <view class="pop-goods-des">
+                    <view class="pop-goods-title">{{goodsDetail.basicInfo.name}}</view>
+                    <view class="pop-goods-price">¥ {{selectSizePrice}}</view>
+                </view>
+                <view class="pop-goods-close" bindtap="closePopupTap"></view>
+             </view>
+             <view class="size-label-box">
+                <block wx:for="{{goodsDetail.properties}}" wx:for-item="property" wx:for-index="idx">
+                <view class="label">{{property.name}}</view> 
+                <view class="label-item-box">
+                    <view class="label-item {{item.active ? 'active' : '' }}" wx:for="{{property.childsCurGoods}}" bindtap="labelItemTap" data-propertyindex="{{idx}}" data-propertyid="{{property.id}}" data-propertyname="{{property.name}}" data-propertychildindex="{{index}}" data-propertychildid="{{item.id}}" data-propertychildname="{{item.name}}">
+                        {{item.name}}
+                    </view> 
+                </view>
+                </block>
+             </view> 
+             <view class="buy-num-box">
+                <view class="num-label">购买数量</view>
+                <view class="num-box">
+                    <view class="num-jian {{buyNumber == buyNumMin ? 'hui': ''}}" bindtap="numJianTap">-</view>
+                    <view class="num-input">
+                       <input  type="number" value="{{buyNumber}}" disabled/>
+                    </view>
+                    <view class="num-jia {{buyNumber== buyNumMax ? 'hui': ''}}" bindtap="numJiaTap">+</view>
+                </view>
+             </view>  
+             <view class="popup-join-btn" bindtap="addShopCar">
+                加入购物车
+             </view>
+        </view>
+    </view>
+</view>

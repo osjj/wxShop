@@ -1,0 +1,25 @@
+<!--index.wxml-->
+<!--pages/index/index.wxml-->
+<view class="container">
+  <scroll-view class="type-scroll" scroll-y>
+    <view class="type-container">
+      <view class="type-box" wx:for-items="{{categories}}" wx:key="scroll">
+        <view id="{{item.id}}" class="type-navbar-item {{activeCategoryId==item.id?'type-item-on':''}}" bindtap="tabClick">
+          {{item.name}}
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <scroll-view class="goods-scroll" scroll-y>
+    <view class="goods-container">
+      <view class="goods-box" wx:for="{{goods}}" wx:key="goods" data-id="{{item.id}}" bindtap="tabDetails">
+        <view class="image-box">
+          <image src="{{item.pic}}"></image>
+        </view>
+        <view class="goods-title">{{item.name}}</view>
+        <view class="goods-price">￥{{item.minPrice}}</view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+

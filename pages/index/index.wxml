@@ -1,0 +1,25 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <view class="swiper-container">
+    <swiper class="swiper" indicator-dots="{{indicatorDors}}"  autoplay="{{autoplay}}" duration="{{duration}}" interval="{{interval}}">
+      <block wx:for="{{banners}}" wx:key="banner">
+        <swiper-item class="swiper-item">
+          <image src="{{item.picUrl}}" width="750rpx" height="562.5rpx"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="title-container">
+    <view class="title1">今日推荐</view>
+    <view class="title2">全网价格最低</view>
+  </view>
+  <view class="goods-container">
+    <view class="goods-box" wx:for="{{goods}}" wx:key="goods" data-id="{{item.id}}" bindtap="tabDetails">
+        <view class="image-box">
+          <image src="{{item.pic}}"></image>
+        </view>
+        <view class="goods-title">{{item.name}}</view>
+        <view class="goods-price">￥{{item.minPrice}}</view>
+    </view>
+  </view>
+</view>
